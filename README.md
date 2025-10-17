@@ -81,8 +81,6 @@ VITE_BACKEND_URL=http://localhost:5000
 VITE_FRONTEND_URL=http://localhost:5173  # optional, used for display
 ```
 
-> Never commit `.env` files to Git. It is ignored in `.gitignore`.
-
 ---
 
 ## 🐳 Docker Setup
