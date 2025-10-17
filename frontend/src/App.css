@@ -1,0 +1,223 @@
+/* src/App.css */
+
+/* --- Root Variables for Theming --- */
+:root {
+  --primary-color: #007bff;
+  --primary-hover-color: #0056b3;
+  --secondary-color: #343a40;
+  --background-color: #f8f9fa;
+  --container-bg-color: #ffffff;
+  --error-color: #dc3545;
+  --success-color: #28a745;
+  --text-color: #212529;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* --- General & Body Styles --- */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the header/footer */
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* --- Header & Footer --- */
+.App-header {
+  margin-bottom: 2.5rem;
+}
+
+.App-header h1 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.App-header p {
+  font-size: 1.1rem;
+  color: #6c757d;
+}
+
+footer {
+  margin-top: auto;
+  padding-top: 2rem;
+  color: #adb5bd;
+  font-size: 0.9rem;
+}
+
+/* --- Main Content Container --- */
+main {
+  background-color: var(--container-bg-color);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  max-width: 650px;
+  /* --- FIX: Add these two lines to center the main content --- */
+  margin-left: auto;
+  margin-right: auto;
+  /* --- END FIX --- */
+}
+
+/* --- Form Styles --- */
+.shortener-form .input-container {
+  display: flex;
+  gap: 10px;
+}
+
+.shortener-form input[type="text"] {
+  flex-grow: 1;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: var(--border-radius);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shortener-form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.shortener-form input[type="text"].input-error {
+  border-color: var(--error-color);
+}
+.shortener-form input[type="text"].input-error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+
+.shortener-form button {
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.shortener-form button:hover:not(:disabled) {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
+}
+
+.shortener-form button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* --- Message Styles (Errors) --- */
+.input-error-text {
+  color: var(--error-color);
+  text-align: left;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.error-message {
+  margin-top: 1.5rem;
+  color: var(--error-color);
+  background-color: #f8d7da;
+  padding: 12px;
+  border-radius: var(--border-radius);
+  border: 1px solid #f5c6cb;
+}
+
+/* --- Result Display Styles --- */
+.result-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #e9ecef4d;
+  border: 1px solid #dee2e6;
+  border-radius: var(--border-radius);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-container p {
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.result-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background-color: #fff;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: var(--border-radius);
+}
+
+.result-display a {
+  font-family: 'SF Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  word-break: break-all;
+  text-align: left;
+}
+
+.result-display a:hover {
+  text-decoration: underline;
+}
+
+.result-display button {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.result-display button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.result-display button.copied {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+  color: white;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 680px) {
+  main {
+    padding: 1.5rem;
+  }
+  .shortener-form .input-container {
+    flex-direction: column;
+  }
+  .result-display {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
